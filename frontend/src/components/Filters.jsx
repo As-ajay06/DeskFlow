@@ -1,6 +1,8 @@
 export default function Filters({ priority, onPriorityChange, breached, onBreachedChange }) {
   return (
     <div className="filters-bar">
+      <span className="filters-label">Filter</span>
+
       <select value={priority} onChange={(e) => onPriorityChange(e.target.value)}>
         <option value="">All Priorities</option>
         <option value="low">Low</option>

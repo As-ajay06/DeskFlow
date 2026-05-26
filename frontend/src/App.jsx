@@ -76,12 +76,22 @@ export default function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>
-          <span>Desk</span>Flow
-        </h1>
-        <button className="btn btn-primary" onClick={() => setShowModal(true)}>
-          + New Ticket
-        </button>
+        <div className="header-brand">
+          <div className="header-logo">🎫</div>
+          <div className="header-titles">
+            <h1><span className="brand-accent">Desk</span>Flow</h1>
+            <span className="header-tagline">Support Ticket Triage</span>
+          </div>
+        </div>
+        <div className="header-right">
+          <div className="header-badge">
+            <span className="status-dot" />
+            System Online
+          </div>
+          <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+            + New Ticket
+          </button>
+        </div>
       </header>
 
       <StatsStrip stats={stats} />
@@ -93,18 +103,18 @@ export default function App() {
         onBreachedChange={setBreached}
       />
 
-      {error && <div className="error-banner">{error}</div>}
+      {error && <div className="error-banner">⚠ {error}</div>}
 
       {loading ? (
         <div className="loading">
-          <div className="spinner" />
-          Loading tickets...
+          <div className="spinner-ring" />
+          Loading tickets…
         </div>
       ) : (
         <Board tickets={tickets} onTicketUpdate={handleTicketUpdate} onError={showToast} />
       )}
 
-      {toast && <div className="toast">{toast}</div>}
+      {toast && <div className="toast">⚠ {toast}</div>}
 
       {showModal && (
         <CreateTicketModal onClose={() => setShowModal(false)} onCreated={handleTicketCreated} />

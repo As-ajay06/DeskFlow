@@ -55,6 +55,7 @@ export default function Board({ tickets, onTicketUpdate, onError }) {
       {STATUSES.map((status) => (
         <div
           key={status}
+          data-status={status}
           className={`column ${dragOverCol === status ? 'drag-over' : ''}`}
           onDragOver={(e) => {
             e.preventDefault();
@@ -64,12 +65,18 @@ export default function Board({ tickets, onTicketUpdate, onError }) {
           onDrop={(e) => handleDrop(e, status)}
         >
           <div className="column-header">
-            <span className="column-title">{COLUMN_LABELS[status]}</span>
+            <div className="column-title-wrap">
+              <span className="column-dot" />
+              <span className="column-title">{COLUMN_LABELS[status]}</span>
+            </div>
             <span className="column-count">{grouped[status].length}</span>
           </div>
           <div className="column-cards">
             {grouped[status].length === 0 ? (
-              <div className="empty-column">No tickets</div>
+              <div className="empty-column">
+                <span className="empty-icon">📭</span>
+                No tickets
+              </div>
             ) : (
               grouped[status].map((ticket) => (
                 <TicketCard

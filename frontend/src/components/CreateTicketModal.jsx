@@ -59,10 +59,11 @@ export default function CreateTicketModal({ onClose, onCreated }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2>Create Ticket</h2>
-          <button className="modal-close" onClick={onClose}>
-            ×
-          </button>
+          <div className="modal-header-left">
+            <div className="modal-icon">🎫</div>
+            <h2>Create Ticket</h2>
+          </div>
+          <button className="modal-close" onClick={onClose}>✕</button>
         </div>
 
         {errors._general && <div className="error-banner">{errors._general}</div>}
